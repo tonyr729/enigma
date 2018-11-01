@@ -2,7 +2,7 @@ require 'test_helper.rb'
 
 class EnigmaTest < Minitest::Test
   def setup
-    @enigma = Enigma.new()
+    @enigma = Enigma.new("")
   end
 
   def test_it_exists
