@@ -21,4 +21,14 @@ class EncryptionTest < Minitest::Test
     assert_equal message.length, actual.length
     refute message = actual
   end
+
+  def test_converts_key_and_date_to_rotation_cypher
+    skip
+    key = "12345"
+    date_key = "1102"
+    actual = @encryption.convert_key_and_date(key, date_key)
+
+    assert_instance_of Enumerable, actual
+    assert_equal [12], actual.next
+  end
 end
