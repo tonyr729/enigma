@@ -31,4 +31,11 @@ class EncryptionTest < Minitest::Test
     assert_instance_of Enumerable, actual
     assert_equal [12], actual.next
   end
+
+  def test_it_gets_date_key
+    date = "021118"
+    actual = @encryption.get_date_key(date)
+
+    assert_equal 9924, actual
+  end
 end
