@@ -24,7 +24,7 @@ class EnigmaTest < Minitest::Test
 
     message = "hello world end"
     key = "12345"
-    date = Time.now.strftime("%Y%m%d")
+    date = Time.now.strftime("%d%m%dy")
 
     @enigma.encrypt(message, key, date)
 
