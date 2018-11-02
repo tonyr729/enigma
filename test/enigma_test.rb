@@ -13,4 +13,8 @@ class EnigmaTest < Minitest::Test
   def test_it_has_encryption
     assert_instance_of Encryption, @enigma.encryption
   end
+
+  def test_it_has_decryption
+    assert_instance_of Decryption, @enigma.decryption
+  end
 end
