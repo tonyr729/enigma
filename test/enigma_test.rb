@@ -97,4 +97,18 @@ class EnigmaTest < Minitest::Test
     actual = @enigma.decrypt(message, key, date)
     assert_equal expected, actual
   end
+
+  def test_it_can_decrypt_a_message_with_only_a_key
+    message = "bjugieejlqmvzsm"
+    key = "12345"
+    date = Time.now.strftime("%d%m%y").sub!(/^0/, "")
+
+    expected = {
+      decryption: "hello world end",
+      key: key,
+      date: date
+    }
+    actual = @enigma.decrypt(message, key)
+    assert_equal expected, actual
+  end
 end
