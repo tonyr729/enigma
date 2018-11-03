@@ -84,6 +84,24 @@ class EnigmaTest < Minitest::Test
     assert_equal date, actual[:date]
   end
 
+  def test_it_can_encrypt_a_message_case_insensative
+    message = "Hello World End"
+    key = "12345"
+    date = "31118"
+
+    actual = @enigma.encrypt(message, key, date)
+    assert_equal "bjugieejlqmvzsm", actual[:encryption]
+  end
+
+  def test_it_can_encrypt_a_message_with_symbols
+    message = "Hello! World! End!"
+    key = "12345"
+    date = "31118"
+
+    actual = @enigma.encrypt(message, key, date)
+    assert_equal "bjugi!iriwuz!eniy!", actual[:encryption]
+  end
+
   def test_it_can_decrypt_a_message
     message = "bjugieejlqmvzsm"
     key = "12345"
