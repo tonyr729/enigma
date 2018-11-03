@@ -1,7 +1,10 @@
 class Encryption
-  def encrypt_message(message, key, date)
-    date_key = get_date_key(date)
-    rotation_cypher = convert_key_and_date(key, date_key)
+
+  def initialize
+    @char_set = ("a".."z").to_a << " "
+  end
+
+  def encrypt_message(message, rotation_cypher)
     set = @char_set.join
     encrypted = message.chars.map do |char|
       cypher_set = @char_set.rotate(rotation_cypher.next).join
