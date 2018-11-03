@@ -44,4 +44,17 @@ class EnigmaTest < Minitest::Test
       assert_instance_of Integer, char.to_i
     end
   end
+
+  def test_it_can_generate_a_date
+    actual = @enigma.date_gen
+
+    expected = Time.now.strftime("%d%m%y")
+
+    assert_equal expected, actual
+    assert_instance_of String, actual
+    assert_equal 6, actual.length
+    actual.chars.each do |char|
+      assert_instance_of Integer, char.to_i
+    end
+  end
 end
