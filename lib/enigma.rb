@@ -27,7 +27,7 @@ class Enigma
     Time.now.strftime("%d%m%y")
   end
 
-  def decrypt(message, key, date)
+  def decrypt(message, key, date = date_gen)
     date_key = @cypher.get_date_key(date)
     rotation_cypher = @cypher.convert_key_and_date(key, date_key)
     decrypted_message = @decryption.decrypt_message(message, rotation_cypher)
