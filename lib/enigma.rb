@@ -11,6 +11,11 @@ class Enigma
   def encrypt(message, key, date)
     date_key = @cypher.get_date_key(date)
     rotation_cypher = @cypher.convert_key_and_date(key, date_key)
-    @encryption.encrypt_message(message, rotation_cypher)
+    encrypted_message = @encryption.encrypt_message(message, rotation_cypher)
+    {
+    encryption: encrypted_message,
+    key: key,
+    date: date
+    }
   end
 end
