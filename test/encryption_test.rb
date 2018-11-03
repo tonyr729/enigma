@@ -11,14 +11,11 @@ class EncryptionTest < Minitest::Test
 
   def test_it_can_encrypt_message
     message = "hello world end"
-    key = "12345"
-    date = Time.now.strftime("%Y%m%d")
+    cypher = [1, 2, 3, 4].cycle
 
-    actual = @encryption.encrypt_message(message, key, date)
+    actual = @encryption.encrypt_message(message, cypher)
 
-    assert_instance_of String, actual
-    assert_equal message.length, actual.length
-    refute message == actual
+    assert_equal "igoppbzssngdfpg", actual
   end
 
 end
