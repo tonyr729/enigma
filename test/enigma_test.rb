@@ -57,4 +57,30 @@ class EnigmaTest < Minitest::Test
       assert_instance_of Integer, char.to_i
     end
   end
+
+  def test_it_can_encrypt_a_message_without_a_date
+    message = "hello world end"
+    key = "12345"
+    date = Time.now.strftime("%d%m%y").sub!(/^0/, "")
+
+    expected = {
+      encryption: "bjugieejlqmvzsm",
+      key: key,
+      date: date
+    }
+    actual = @enigma.encrypt(message, key)
+    assert_equal expected, actual
+  end
+
+  def test_it_can_encrypt_a_message_without_a_date_or_key
+    message = "hello world end"
+    date = Time.now.strftime("%d%m%y").sub!(/^0/, "")
+
+    actual = @enigma.encrypt(message)
+    assert_instance_of String, actual[:encryption]
+    assert_equal message.length, actual[:encryption].length
+    assert_instance_of String, actual[:key]
+    assert_equal 5, actual[:key].length
+    assert_equal date, actual[:date]
+  end
 end
