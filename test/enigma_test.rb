@@ -1,4 +1,4 @@
-require 'test_helper.rb'
+require_relative 'test_helper.rb'
 
 
 class EnigmaTest < Minitest::Test
@@ -16,6 +16,10 @@ class EnigmaTest < Minitest::Test
 
   def test_it_has_decryption
     assert_instance_of Decryption, @enigma.decryption
+  end
+
+  def test_it_has_cypher
+    assert_instance_of Cypher, @enigma.cypher
   end
 
   def test_it_calls_encryption_of_a_message
