@@ -21,7 +21,7 @@ class EnigmaTest < Minitest::Test
     assert_instance_of Cypher, @enigma.cypher
   end
 
-  def test_it_calls_encryption_of_a_message
+  def test_it_encrypts_message
     message = "hello world end"
     key = "12345"
     date = Time.now.strftime("%d%m%y")
@@ -82,5 +82,19 @@ class EnigmaTest < Minitest::Test
     assert_instance_of String, actual[:key]
     assert_equal 5, actual[:key].length
     assert_equal date, actual[:date]
+  end
+
+  def test_it_can_decrypt_a_message
+    message = "bjugieejlqmvzsm"
+    key = "12345"
+    date = Time.now.strftime("%d%m%y").sub!(/^0/, "")
+
+    expected = {
+      encryption: "hello world end",
+      key: key,
+      date: date
+    }
+    actual = @enigma.decrypt(message, key, date)
+    assert_equal expected, actual
   end
 end
