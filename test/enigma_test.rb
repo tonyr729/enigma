@@ -90,7 +90,7 @@ class EnigmaTest < Minitest::Test
     date = Time.now.strftime("%d%m%y").sub!(/^0/, "")
 
     expected = {
-      encryption: "hello world end",
+      decryption: "hello world end",
       key: key,
       date: date
     }
