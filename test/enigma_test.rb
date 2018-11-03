@@ -1,6 +1,5 @@
 require_relative 'test_helper.rb'
 
-
 class EnigmaTest < Minitest::Test
   def setup
     @enigma = Enigma.new
@@ -34,5 +33,15 @@ class EnigmaTest < Minitest::Test
     }
     actual = @enigma.encrypt(message, key, date)
     assert_equal expected, actual
+  end
+
+  def test_it_can_generate_a_key
+    actual = @enigma.key_gen
+
+    assert_instance_of String, actual
+    assert_equal 5, actual.length
+    actual.chars.each do |char|
+      assert_instance_of Integer, char.to_i
+    end
   end
 end
