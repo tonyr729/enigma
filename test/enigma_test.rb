@@ -17,10 +17,6 @@ class EnigmaTest < Minitest::Test
     assert_instance_of Decryption, @enigma.decryption
   end
 
-  def test_it_has_cypher
-    assert_instance_of Cypher, @enigma.cypher
-  end
-
   def test_it_encrypts_message
     message = "hello world end"
     key = "12345"
