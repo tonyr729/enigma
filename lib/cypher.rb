@@ -11,4 +11,12 @@ class Cypher
     (date.to_i ** 2).to_s[-4..-1]
   end
 
+  def key_gen
+    ("1".."99999").to_a.sample.rjust(5, "0")
+  end
+
+  def date_gen
+    Time.now.strftime("%d%m%y")
+  end
+
 end
