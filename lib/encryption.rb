@@ -1,7 +1,7 @@
-class Encryption < Cypher
+class Encryption
 
   def initialize
-    super
+    @char_set = ("a".."z").to_a << " "
   end
 
   def encrypt_message(message, rotation_cypher)

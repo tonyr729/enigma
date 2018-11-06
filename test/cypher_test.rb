@@ -11,11 +11,36 @@ class CypherTest < Minitest::Test
 
   def test_converts_key_and_date_to_rotation_cypher
     key = "12345"
+    key_cycle = key.chars.each_cons(2)
     date_key = "1102"
-    actual = @cypher.convert_key_and_date(key, date_key)
+
+    actual = @cypher.convert_key_and_date(key_cycle, date_key)
 
     assert_instance_of Enumerator, actual
     assert_equal 13, actual.next
+  end
+
+  def test_it_can_generate_a_date
+    actual = @cypher.date_gen
+
+    expected = Time.now.strftime("%d%m%y")
+
+    assert_equal expected, actual
+    assert_instance_of String, actual
+    assert_equal 6, actual.length
+    actual.chars.each do |char|
+      assert_instance_of Integer, char.to_i
+    end
+  end
+
+  def test_it_can_generate_a_key
+    actual = @cypher.key_gen
+
+    assert_instance_of String, actual
+    assert_equal 5, actual.length
+    actual.chars.each do |char|
+      assert_instance_of Integer, char.to_i
+    end
   end
 
   def test_it_gets_date_key

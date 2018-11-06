@@ -1,13 +1,16 @@
 class Cypher
 
-  def initialize
-    @char_set = ("a".."z").to_a << " "
+  def convert_key_and_date(key_cycle, date_key)
+    rotation = date_key.chars.map do |num|
+      key_rotation = key_cycle.next.join.to_i
+      offset = num.to_i
+      key_rotation + offset
+    end
+    rotation.cycle
   end
 
-  def convert_key_and_date(key, date_key)
-    key_cycle = key.chars.each_cons(2)
-    rotation = date_key.chars.map {|num| key_cycle.next.join.to_i + num.to_i}
-    rotation.cycle
+  def generate_key_cycle(key)
+    key.chars.each_cons(2)
   end
 
   def get_date_key(date)
