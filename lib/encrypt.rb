@@ -13,4 +13,4 @@ encrypted_message = enigma.encrypt(message)
 encryption_file = File.open("lib/#{ARGV.last}", "w")
 encryption_file.write(encrypted_message[:encryption])
 encryption_file.close
-puts "Created 'encrypted.txt' with the key #{encrypted_message[:key]} and date #{encrypted_message[:date]}"
+puts "Created '#{ARGV.last}' with the key #{encrypted_message[:key]} and date #{encrypted_message[:date]}"

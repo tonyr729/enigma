@@ -18,4 +18,4 @@ decrypted_file = File.open("lib/#{ARGV[1]}", "w")
 decrypted_file.write(decrypted_message[:decryption])
 decrypted_file.close
 
-puts "Created 'decrypted.txt' with the key #{decrypted_message[:key]} and date #{decrypted_message[:date]}"
+puts "Created '#{ARGV[1]}' with the key #{decrypted_message[:key]} and date #{decrypted_message[:date]}"
