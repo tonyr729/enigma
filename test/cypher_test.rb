@@ -14,7 +14,7 @@ class CypherTest < Minitest::Test
     key_cycle = key.chars.each_cons(2)
     date_key = "1102"
 
-    actual = @cypher.convert_key_and_date(key_cycle, date_key)
+    actual = @cypher.generate_rotation_cypher(key_cycle, date_key)
 
     assert_instance_of Enumerator, actual
     assert_equal 13, actual.next
