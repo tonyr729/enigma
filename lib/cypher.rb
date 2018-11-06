@@ -1,6 +1,6 @@
 class Cypher
 
-  def convert_key_and_date(key_cycle, date_key)
+  def generate_rotation_cypher(key_cycle, date_key)
     rotation = date_key.chars.map do |num|
       key_rotation = key_cycle.next.join.to_i
       offset = num.to_i
